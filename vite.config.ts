@@ -1,5 +1,5 @@
 
-import dtsPlugin from "vite-plugin-dts";
+import dtsPlugin from "unplugin-dts/vite";
 import { defineConfig } from "vite";
 import { join } from "path";
 

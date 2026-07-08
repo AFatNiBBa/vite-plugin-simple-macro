@@ -19,7 +19,7 @@
     "@types/babel__core": "^7.20.2",
     "@types/node": "^20.6.0",
     "@typescript/typescript6": "^6.0.2",
-    "vite-plugin-dts": "^5.0.3"
+    "unplugin-dts": "^1.0.3"
   },
   "dependencies": {
     "@babel/core": "^7.23.0",
