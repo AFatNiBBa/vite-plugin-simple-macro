@@ -10,16 +10,6 @@
 		"noUnusedParameters": true,
 		"noUnusedLocals": true,
 		"noImplicitThis": true,
-		"strict": true,
-
-		// Ui
-		"types": [ "vite/client" ],
-		"jsxImportSource": "solid-js",
-		"jsx": "preserve",
-
-		// Extra
-		"paths": {
-			"~/*": [ "./src/*" ]
-		}
+		"strict": true
 	}
 }
