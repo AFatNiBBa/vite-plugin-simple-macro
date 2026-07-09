@@ -1,7 +1,6 @@
 
 import dtsPlugin from "unplugin-dts/vite";
 import { defineConfig } from "vite";
-import { join } from "path";
 
 export default defineConfig({
     plugins: [ dtsPlugin({ bundleTypes: true }) ],
@@ -12,8 +11,8 @@ export default defineConfig({
             external: x => !x.match(/^(?:\.|\/|\w:)/),
         },
         lib: {
-            entry: join(__dirname, "src/index.ts"),
-            formats: [ "cjs", "es" ],
+            entry: "src/index.ts",
+            formats: [ "es" ],
             fileName: "index"
         }
     }
