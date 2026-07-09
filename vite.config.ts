@@ -9,7 +9,7 @@ export default defineConfig({
         minify: false,
         target: "ESNext",
         rollupOptions: {
-            external: [ "vite", "@babel/core", "@babel/types" ],
+            external: x => !x.match(/^(?:\.|\/|\w:)/),
         },
         lib: {
             entry: join(__dirname, "src/index.ts"),
