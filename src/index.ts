@@ -1,30 +1,35 @@
 
-import { and, FilterExpression, include, exprInterpreter } from "@rolldown/pluginutils";
-import { PREREQUISITE, addSpecificFilter, VISITOR } from "./util";
+import { and, include, exprInterpreter } from "@rolldown/pluginutils";
+import { PREREQUISITE, combineFilters, VISITOR } from "./util";
 import { parseAsync, PluginItem, traverse } from "@babel/core";
 import { Plugin, SourceMapInput } from "rolldown";
 import { generate } from "@babel/generator";
-import { Context, Macro } from "./type";
-
-// TODO: Prova se macro "A(2)" può generare macro "B()" che genera macro "A(1)" > (Testa se funziona la ricorsività delle macro)
-// TODO: Usa su "font-class"? > (Almeno "ensureImport()")
+import { Context, Options } from "./type";
 
 export * from "./filter";
 export * from "./type";
 
-export default function macroPlugin(opts: { filter?: FilterExpression, macro: Macro[] }): Plugin {
+// TODO: Try whether macro "A(2)" can generate macro "B()", which generates macro "A(1)" > (Test if the recursion of macros works)
+// TODO: Use "ensureImport()" in "font-class" instead of checking by hand
+// TODO: Replace "@rolldown/pluginutils" with "rolldown/filter"
+
+/**
+ * Creates an instance of the macro plugin with the specified options and macros
+ * @param opts The settings for the plugin
+ */
+export default function macroPlugin(opts: Options): Plugin {
     const { filter, macro } = opts;
     const inner = filter ? and(PREREQUISITE, filter) : PREREQUISITE;
-    const outer = addSpecificFilter(macro, inner);
+    const outer = combineFilters(inner, macro);
     return {
         name: "vite-plugin-simple-macro",
         transform: {
             order: "pre",
             filter: [ include(outer) ],
             async handler(code, id, info) {
-                // TODO: Vite non supporta ancora queste cose quindi tocca ricontrollare per la dev mode > Crea issue
-                // TODO: Prova a convertire in un filtro normale di vite?
-                // Quelle specifiche le filtra dopo, quindi qui basta "inner", non serve "outer"
+                // TODO: Try write a function to convert the expression to a simple Vite filter?
+                // TODO: https://github.com/vitejs/vite/issues/21956
+                // Specific macros are filtered afterwards, so "inner" is enough here, I don't need "outer"
                 if (!exprInterpreter(inner, code, id, info.moduleType)) return;
 
                 const filtered = macro.filter(({ filter }) => !filter || exprInterpreter(filter, code, id, info.moduleType));
@@ -32,9 +37,9 @@ export default function macroPlugin(opts: { filter?: FilterExpression, macro: Ma
 
                 const plugin = [ "@babel/plugin-syntax-typescript", { isTSX: true } ] satisfies PluginItem;
                 const ast = (await parseAsync(code, { filename: id, plugins: [ plugin ] }))!;
-                const ctx: Context = { id, macro: filtered, changed: 0, ...info };
+                const ctx: Context = { id, macro: filtered, changes: 0, ...info };
                 traverse(ast, VISITOR, undefined, ctx);
-                if (!ctx.changed) return;
+                if (!ctx.changes) return;
 
                 const out = generate(ast, { sourceMaps: true, sourceFileName: id });
                 return { code: out.code, map: out.map as SourceMapInput };
