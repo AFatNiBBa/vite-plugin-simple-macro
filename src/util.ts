@@ -1,5 +1,5 @@
 
-import { and, FilterExpression, id, makeIdFiltersToMatchWithQuery, or } from "@rolldown/pluginutils";
+import { and, FilterExpression, id, makeIdFiltersToMatchWithQuery, or } from "rolldown/filter";
 import { types, Visitor } from "@babel/core";
 import { Context, Macro } from "./type";
 

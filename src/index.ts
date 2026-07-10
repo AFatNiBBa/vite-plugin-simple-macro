@@ -1,6 +1,6 @@
 
-import { and, include, exprInterpreter } from "@rolldown/pluginutils";
-import { PREREQUISITE, combineFilters, VISITOR } from "./util";
+import { and, exprInterpreter, include } from "rolldown/filter";
+import { combineFilters, PREREQUISITE, VISITOR } from "./util";
 import { parseAsync, PluginItem, traverse } from "@babel/core";
 import { Plugin, SourceMapInput } from "rolldown";
 import { generate } from "@babel/generator";
@@ -11,7 +11,7 @@ export * from "./type";
 
 // TODO: Try whether macro "A(2)" can generate macro "B()", which generates macro "A(1)" > (Test if the recursion of macros works)
 // TODO: Use "ensureImport()" in "font-class" instead of checking by hand
-// TODO: Replace "@rolldown/pluginutils" with "rolldown/filter"
+// TODO: "readMe.md"
 
 /**
  * Creates an instance of the macro plugin with the specified options and macros

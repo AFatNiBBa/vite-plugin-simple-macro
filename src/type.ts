@@ -1,5 +1,5 @@
 
-import { FilterExpression } from "@rolldown/pluginutils";
+import { FilterExpression } from "rolldown/filter";
 import { NodePath } from "@babel/traverse";
 import { ModuleType } from "rolldown";
 import { types } from "@babel/core";

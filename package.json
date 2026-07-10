@@ -20,8 +20,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
-    "@babel/plugin-syntax-typescript": "^7.0.0",
-    "@rolldown/pluginutils": "^1.0.1"
+    "@babel/plugin-syntax-typescript": "^7.0.0"
   },
   "peerDependencies": {
     "rolldown": "^1.1.4"
