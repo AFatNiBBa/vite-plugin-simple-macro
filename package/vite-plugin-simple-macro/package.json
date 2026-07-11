@@ -1,0 +1,32 @@
+{
+  "name": "vite-plugin-simple-macro",
+  "version": "1.1.1",
+  "description": "A simple macro plugin for Vite",
+  "author": "AFatNiBBa",
+  "license": "ISC",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "scripts": {
+    "build": "vite build",
+    "save": "npm run build && npm publish"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.20.5"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-typescript": "^7.0.0"
+  },
+  "peerDependencies": {
+    "rolldown": "^1.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AFatNiBBa/vite-plugin-simple-macro.git"
+  },
+  "keywords": [
+    "vite",
+    "plugin",
+    "macro"
+  ]
+}
