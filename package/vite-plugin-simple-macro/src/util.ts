@@ -15,13 +15,13 @@ export const PREREQUISITE: FilterExpression = id(makeIdFiltersToMatchWithQuery(/
  * If at least a macro returns `true` then the `changed` property of the context will be incremented
  */
 export const VISITOR: Visitor<Context> = {
-    CallExpression(path, ctx) {
-        for (const macro of ctx.macro) {
-            if (!macro.transform.call(ctx, path, ctx, types)) continue;
-            ctx.changes++;
-            break;
-        }
+  CallExpression(path, ctx) {
+    for (const macro of ctx.macro) {
+      if (!macro.transform.call(ctx, path, ctx, types)) continue;
+      ctx.changes++;
+      break;
     }
+  }
 };
 
 /**
@@ -35,13 +35,13 @@ export const VISITOR: Visitor<Context> = {
  * @param list The sequence of macros whose filters will be combined with the general filter
  */
 export function combineFilters(inner: FilterExpression, list: Iterable<Macro>) {
-    const out: FilterExpression[] = [];
-    
-    for (const { filter } of list)
-        if (filter)
-            out.push(filter);
-        else
-            return inner; // Se ce n'è almeno uno senza filtro allora tocca passare da tutte le parti, perchè almeno a lui serve
+  const out: FilterExpression[] = [];
+  
+  for (const { filter } of list)
+    if (filter)
+      out.push(filter);
+    else
+      return inner; // Se ce n'è almeno uno senza filtro allora tocca passare da tutte le parti, perchè almeno a lui serve
 
-    return and(inner, or(...out)); // Se non ce n'è nessuno restituisce sempre falso
+  return and(inner, or(...out)); // Se non ce n'è nessuno restituisce sempre falso
 }
