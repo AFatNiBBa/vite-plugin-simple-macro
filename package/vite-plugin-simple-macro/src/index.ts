@@ -9,7 +9,6 @@ import { Context, Options } from "./type";
 export * from "./filter";
 export * from "./type";
 
-// TODO: Try whether macro "A(2)" can generate macro "B()", which generates macro "A(1)" > (Test if the recursion of macros works)
 // TODO: Use "ensureImport()" in "font-class" instead of checking by hand
 // TODO: "readMe.md"
 
@@ -27,7 +26,6 @@ export default function macroPlugin(opts: Options): Plugin {
       order: "pre",
       filter: [ include(outer) ],
       async handler(code, id, info) {
-        // TODO: Try write a function to convert the expression to a simple Vite filter?
         // TODO: https://github.com/vitejs/vite/issues/21956
         // Specific macros are filtered afterwards, so "inner" is enough here, I don't need "outer"
         if (!exprInterpreter(inner, code, id, info.moduleType)) return;
