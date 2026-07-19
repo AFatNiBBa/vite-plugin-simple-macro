@@ -8,7 +8,7 @@ import { Framework } from './type';
  * @param f The function being wrapped
  * @param framework The frontend framework to target
  */
-export function wrap(call: NodePath<t.CallExpression>, f: NodePath<t.Expression>, framework: Framework) {
+export function wrap(call: NodePath<t.CallExpression>, f: t.Expression, framework: Framework) {
   const top = call.findParent(x => x.isProgram())!;      
   const idImport = top.scope.generateUidIdentifier("csf");
   const idServer = top.scope.generateUidIdentifier("srv");
@@ -24,7 +24,7 @@ export function wrap(call: NodePath<t.CallExpression>, f: NodePath<t.Expression>
       t.stringLiteral(`@tanstack/${framework}-start`)
     ),
     t.variableDeclaration("const", [
-      t.variableDeclarator(idServer, f.node),
+      t.variableDeclarator(idServer, f),
       t.variableDeclarator(
         idIsomorphic,
         t.callExpression(

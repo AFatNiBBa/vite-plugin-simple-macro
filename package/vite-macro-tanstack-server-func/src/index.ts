@@ -20,7 +20,7 @@ export default function serverMacro(framework: Framework): Macro {
       if (args.length !== 1) throw call.buildCodeFrameError(`Macro ${JSON.stringify(name)} expects exactly one argument`);
       const [ f ] = args;
       if (!f?.isExpression()) return false;
-      wrap(call, f, framework);
+      wrap(call, f.node, framework);
       return true;
     }
   };
