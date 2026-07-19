@@ -4,7 +4,7 @@ import { code } from "@rolldown/pluginutils";
 import { dispatch } from "./lib/dispatch";
 import { Framework } from "./lib/type";
 
-export { Framework };
+export type { Framework };
 
 /**
  * Enables the {@link __server} macro.

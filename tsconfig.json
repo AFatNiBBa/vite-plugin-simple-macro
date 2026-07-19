@@ -10,6 +10,9 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
-    "strict": true
+    "strict": true,
+
+    // Extra
+    "isolatedModules": true
   }
 }
