@@ -13,7 +13,7 @@ export default defineConfig({
     minify: false,
     target: "ESNext",
     rollupOptions: {
-      external: x => !x.match(/^(?:\.|\/|\w:)/),
+      external: x => !x.match(/^(?:\.|\/|\w:)/)
     },
     lib: {
       entry: "src/index.ts",
