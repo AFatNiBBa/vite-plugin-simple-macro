@@ -1,14 +1,14 @@
 
+import { combineFilters, PREREQUISITE, VISITOR } from "./lib/util";
 import { and, exprInterpreter, include } from "rolldown/filter";
-import { combineFilters, PREREQUISITE, VISITOR } from "./util";
 import { parseAsync, PluginItem, traverse } from "@babel/core";
 import { Plugin, SourceMapInput } from "rolldown";
+import { Context, Options } from "./lib/type";
 import { generate } from "@babel/generator";
-import { Context, Options } from "./type";
 
 export { type NodePath, types as t } from "@babel/core";
-export * from "./filter";
-export * from "./type";
+export * from "./lib/filter";
+export * from "./lib/type";
 
 // TODO: Use "ensureImport()" in "font-class" instead of checking by hand
 // TODO: "readMe.md"
