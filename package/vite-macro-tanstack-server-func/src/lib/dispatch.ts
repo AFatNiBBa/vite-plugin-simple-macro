@@ -1,5 +1,5 @@
 
-import { NodePath, types as t } from '@babel/core';
+import { NodePath, t } from 'vite-plugin-simple-macro';
 import { Framework } from './type';
 import { invoke } from './invoke';
 import { wrap } from './wrap';

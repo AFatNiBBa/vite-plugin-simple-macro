@@ -1,5 +1,5 @@
 
-import { NodePath, types as t } from '@babel/core';
+import { NodePath, t } from 'vite-plugin-simple-macro';
 
 /**
  * Handles the overload of {@link __server} that invokes the input function directly

@@ -1,8 +1,7 @@
 
 import { FilterExpression } from "rolldown/filter";
-import { NodePath } from "@babel/traverse";
+import { NodePath, types } from "@babel/core";
 import { ModuleType } from "rolldown";
-import { types } from "@babel/core";
 
 /** The settings for the macro plugin */
 export interface Options {
@@ -45,8 +44,7 @@ export interface Macro {
    * @param this The same object passed as {@link ctx}
    * @param call The call expression that is being processed
    * @param ctx The context of the file that is currently being pre-processed
-   * @param t The {@link types} object, provided as a parameter for convenience
    * @returns `true` if the macro was applied, `false` otherwise
    */
-  transform(this: Context, call: NodePath<types.CallExpression>, ctx: Context, t: typeof types): boolean;
+  transform(this: Context, call: NodePath<types.CallExpression>, ctx: Context): boolean;
 }

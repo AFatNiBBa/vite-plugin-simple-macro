@@ -1,7 +1,7 @@
 
 import { and, FilterExpression, id, makeIdFiltersToMatchWithQuery, or } from "rolldown/filter";
-import { types, Visitor } from "@babel/core";
 import { Context, Macro } from "./type";
+import { Visitor } from "@babel/core";
 
 /**
  * Mandatory constraints a file should satisfy in order to be processed by the macro system.
@@ -17,7 +17,7 @@ export const PREREQUISITE: FilterExpression = id(makeIdFiltersToMatchWithQuery(/
 export const VISITOR: Visitor<Context> = {
   CallExpression(path, ctx) {
     for (const macro of ctx.macro) {
-      if (!macro.transform.call(ctx, path, ctx, types)) continue;
+      if (!macro.transform.call(ctx, path, ctx)) continue;
       ctx.changes++;
       break;
     }
