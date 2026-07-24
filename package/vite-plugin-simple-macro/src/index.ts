@@ -6,7 +6,7 @@ import { Plugin, SourceMapInput } from "rolldown";
 import { generate } from "@babel/generator";
 import { Context, Options } from "./type";
 
-export { NodePath, types as t } from "@babel/core";
+export { type NodePath, types as t } from "@babel/core";
 export * from "./filter";
 export * from "./type";
 

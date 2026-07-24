@@ -1,6 +1,6 @@
 {
   "name": "vite-macro-tanstack-server-func",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Makes it easier to write TanStack Start server functions",
   "author": "AFatNiBBa",
   "license": "ISC",
@@ -11,7 +11,7 @@
     "save": "npm run build && npm publish"
   },
   "peerDependencies": {
-    "vite-plugin-simple-macro": "^2.0.0"
+    "vite-plugin-simple-macro": "^2.0.1"
   },
   "repository": {
     "type": "git",
