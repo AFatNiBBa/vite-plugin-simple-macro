@@ -1,8 +1,8 @@
 
 import { Macro, ensureGlobal } from "vite-plugin-simple-macro";
-import { code } from "@rolldown/pluginutils";
 import { dispatch } from "./lib/dispatch";
 import { Framework } from "./lib/type";
+import { code } from "rolldown/filter";
 
 export type { Framework };
 

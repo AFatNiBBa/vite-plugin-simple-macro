@@ -10,6 +10,9 @@
     "build": "vite build",
     "save": "npm run build && npm publish"
   },
+  "dependencies": {
+    "rolldown": "^1.2.9"
+  },
   "peerDependencies": {
     "vite-plugin-simple-macro": "^2.0.1"
   },

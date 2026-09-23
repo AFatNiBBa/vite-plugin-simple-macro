@@ -19,7 +19,7 @@
     "@babel/plugin-syntax-typescript": "^7.0.0"
   },
   "peerDependencies": {
-    "rolldown": "^1.1.4"
+    "rolldown": "^1.2.9"
   },
   "repository": {
     "type": "git",
